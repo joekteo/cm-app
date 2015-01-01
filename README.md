@@ -1,4 +1,4 @@
 cm-app
 ======
 
-character maker
+character maker app
