@@ -9,7 +9,7 @@ var uriUtil     = require('mongodb-uri');
 var mongodbUri  = process.env.MONGOLAB_URI;
 var mongooseUri = uriUtil.formatMongoose(mongodbUri);
 
-mongoose.connect(process.env.MONGO_URL || mongooseUri || 'mongodb://localhost/cm_development', options);
+// mongoose.connect(process.env.MONGO_URL || mongooseUri || 'mongodb://localhost/cm_development', options);
 
 app.use(express.static(__dirname + '/app/'));
 
