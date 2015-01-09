@@ -1,6 +1,5 @@
 'use strict';
 
-var mongoose = require('mongoose');
 var Feed = require('../models/FeedModel.js');
 
 module.exports = function(app) {
@@ -37,11 +36,14 @@ module.exports = function(app) {
     });
   });
 
-  //get all feed
-  app.get('/feed/:ref'), function(req, res) {
-    Feed.find({ parent: req.params.ref }, function (err, data) {
+  app.get('/feed/:ref/:numPosts', function(req, res) {
+    Feed
+    .where('parent').equals(req.params.ref)
+    .limit(req.params.numPosts)
+    .exec(function(err, results) {
       if (err) return res.status(500).send('there was an error');
-      res.json(data);
+      if (!results) return res.status(200).send('no data');
+      if (results) res.json(results);
     });
-  };
+  });
 };

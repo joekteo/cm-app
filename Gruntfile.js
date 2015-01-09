@@ -2,7 +2,9 @@
 
 module.exports = function(grunt) {
   var srcFiles = [
-    'app/**/**/**.js'
+    'app/**/**/**.js',
+    'app/**/*.js',
+    'app/tests/*.js'
   ];
 
   grunt.loadNpmTasks('grunt-browserify');
@@ -93,7 +95,7 @@ module.exports = function(grunt) {
       }
     },
     simplemocha: {
-      src: ['test/feedTest.js']
+      src: ['app/tests/feedTest.js']
     }
   });
 
