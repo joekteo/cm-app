@@ -25,7 +25,7 @@ module.exports = function(app) {
     Feed
     .findOne({id: req.params._id})
     .exec(function(err, feed) {
-      feed.addResource({
+      feed.addComments({
         author: req.body.author,
         content: req.body.cnt
       });
@@ -36,6 +36,7 @@ module.exports = function(app) {
     });
   });
 
+  //gets all feeds
   app.get('/feed/:ref/:numPosts', function(req, res) {
     Feed
     .where('parent').equals(req.params.ref)
