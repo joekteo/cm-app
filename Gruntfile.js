@@ -12,6 +12,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-jscs');
+  grunt.loadNpmTasks('grunt-simple-mocha');
 
   grunt.initConfig({
     browserify: {
@@ -90,11 +91,14 @@ module.exports = function(grunt) {
       options: {
         config: '.jscsrc'
       }
+    },
+    simplemocha: {
+      src: ['test/feedTest.js']
     }
   });
 
   grunt.registerTask('build:dev', ['clean:dev', 'copy:app', 'browserify:dev']);
   grunt.registerTask('build', ['build:dev']);
-  grunt.registerTask('test', ['jshint', 'jscs']);
+  grunt.registerTask('test', ['build:test', 'jshint', 'jscs', 'simplemocha']);
   grunt.registerTask('default', ['test']);
 };

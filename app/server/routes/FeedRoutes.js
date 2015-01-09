@@ -37,7 +37,7 @@ module.exports = function(app) {
     });
   });
 
-  // get all feed
+  //get all feed
   app.get('/feed/:ref'), function(req, res) {
     Feed.find({ parent: req.params.ref }, function (err, data) {
       if (err) return res.status(500).send('there was an error');
