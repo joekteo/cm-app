@@ -14,6 +14,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-jscs');
+  // grunt.loadNpmTasks('grunt-mongoimport');
   grunt.loadNpmTasks('grunt-simple-mocha');
 
   grunt.initConfig({
@@ -39,7 +40,7 @@ module.exports = function(grunt) {
         jshintrc: true
       }
     },
-    copy:{
+    copy: {
       app: {
         cwd: 'app/',
         src: ['*.html'],
@@ -94,6 +95,32 @@ module.exports = function(grunt) {
         config: '.jscsrc'
       }
     },
+    // mongoimport: {
+    //   options: {
+    //     db: 'ontraportApp',
+    //     host: 'localhost',
+    //     port: '27017',
+    //     stopOnError: true,
+    //     collections: [
+    //       {
+    //         name: 'users',
+    //         type: 'json',
+    //         file: './codetest/data/users.json',
+    //         jsonArray: true,
+    //         upsert: true,
+    //         drop: true
+    //       },
+    //       {
+    //         name: 'posts',
+    //         type:'json',
+    //         file: './codetest/data/posts.json',
+    //         jsonArray: true,
+    //         upsert: true,
+    //         drop: true
+    //       }
+    //     ]
+    //   }
+    // },
     simplemocha: {
       src: ['app/tests/feedTest.js']
     }

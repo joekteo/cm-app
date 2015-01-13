@@ -38,7 +38,7 @@ describe('Feed Backend Tests', function() {
     chai.request(server)
       .get('/feed/546e84559fdea70b002bb182/3')
       .end(function(err, res) {
-        console.log(res.body);
+        // console.log(res.body);
         expect(err).to.eql(null);
         expect(res.body).to.be.a('Array');
         expect(Array.isArray(res.body)).to.equal(true);
