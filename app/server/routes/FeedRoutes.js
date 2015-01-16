@@ -3,7 +3,6 @@
 var Feed = require('../models/FeedModel.js');
 
 module.exports = function(app) {
-
   //create a new post and saves to the database
   app.post('/feed/:ref/:titleID', function(req, res) {
     var feed = new Feed({
@@ -19,7 +18,6 @@ module.exports = function(app) {
       res.json(data);
     });
   });
-
   //adds a comment to the exact post
   app.post('/comments/:titleID/', function(req, res) {
     Feed
@@ -35,7 +33,6 @@ module.exports = function(app) {
       });
     });
   });
-
   //gets all feeds
   app.get('/feed/:ref/:numPosts', function(req, res) {
     Feed
