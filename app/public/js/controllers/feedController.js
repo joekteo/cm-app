@@ -5,18 +5,6 @@ module.exports = function(app) {
     $scope.displayAllList = false;
     // $scope.displayFeedInputForm = false;
 
-    $scope.displayAllFeeds = function() {
-      $http({
-        method: 'GET',
-        url: 'feed/10/10'
-      }).success(function(data) {
-        $scope.data = data;
-        $scope.displayAllList = true;
-      }).error(function() {
-        return console.log('unable to find info');
-      });
-    };
-
     $scope.addFeed = function(postId, content) {
       $http({
         method: 'POST',
@@ -27,6 +15,30 @@ module.exports = function(app) {
         // $scope.displayFeedInputForm = true;
       }).error(function() {
         return console.log('unable to add new feed');
+      });
+    };
+
+    $scope.addComment = function(postId, comment) {
+      $http({
+        method: 'POST',
+        url: 'comments' + postId,
+        data: {comment: comment}
+      }).success(function(data) {
+        $scope.addComment = data;
+      }).error(function() {
+        return console.log('unable to add new comment');
+      });
+    };
+
+    $scope.displayAllFeeds = function() {
+      $http({
+        method: 'GET',
+        url: 'feed/10/10'
+      }).success(function(data) {
+        $scope.data = data;
+        $scope.displayAllList = true;
+      }).error(function() {
+        return console.log('unable to find info');
       });
     };
   }]);

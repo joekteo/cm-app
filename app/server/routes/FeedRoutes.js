@@ -18,6 +18,7 @@ module.exports = function(app) {
       res.json(data);
     });
   });
+
   //adds a comment to the exact post
   app.post('/comments/:titleID/', function(req, res) {
     Feed
@@ -33,6 +34,7 @@ module.exports = function(app) {
       });
     });
   });
+
   //gets all feeds
   app.get('/feed/:ref/:numPosts', function(req, res) {
     Feed
