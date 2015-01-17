@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var FeedSchema = new Schema ({
   parent: String,
   title: String,
-  content: String,
+  // content: String,
   comment: [Schema.Types.Mixed]
 });
 

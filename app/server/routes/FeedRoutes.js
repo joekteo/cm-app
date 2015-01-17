@@ -8,7 +8,7 @@ module.exports = function(app) {
     var feed = new Feed({
       parent: req.params.ref,
       title: req.params.titleID,
-      content: req.body.cnt,
+      // content: req.body.cnt,
       comment: req.body.comment
     });
     feed.save(function(err, data) {
@@ -25,8 +25,8 @@ module.exports = function(app) {
     .findOne({id: req.params._id})
     .exec(function(err, feed) {
       feed.addComments({
-        author: req.body.author,
-        content: req.body.cnt
+        author: req.body.author
+        // content: req.body.cnt
       });
       feed.save(function(err, data) {
         if (err) return res.status(500).send('there was an error');

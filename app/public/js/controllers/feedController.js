@@ -9,7 +9,7 @@ module.exports = function(app) {
       $http({
         method: 'POST',
         url: 'post/' + postId,
-        data: {cnt: content}
+        data: {title: content}
       }).success(function(data) {
         $scope.addData = data;
         // $scope.displayFeedInputForm = true;
