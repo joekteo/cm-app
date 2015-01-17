@@ -4,12 +4,10 @@ var Feed = require('../models/FeedModel.js');
 
 module.exports = function(app) {
   //create a new post and saves to the database
-  app.post('/feed/:ref/:titleID', function(req, res) {
+  app.post('/feed/:title', function(req, res) {
+    console.log(req.params.title);
     var feed = new Feed({
-      parent: req.params.ref,
-      title: req.params.titleID,
-      // content: req.body.cnt,
-      comment: req.body.comment
+      title: req.params.title
     });
     feed.save(function(err, data) {
       if (err) {
@@ -25,8 +23,8 @@ module.exports = function(app) {
     .findOne({id: req.params._id})
     .exec(function(err, feed) {
       feed.addComments({
-        author: req.body.author
-        // content: req.body.cnt
+        author: req.body.author,
+        content: req.body.cnt
       });
       feed.save(function(err, data) {
         if (err) return res.status(500).send('there was an error');
@@ -36,14 +34,13 @@ module.exports = function(app) {
   });
 
   //gets all feeds
-  app.get('/feed/:ref/:numPosts', function(req, res) {
+  app.get('/feed/:num', function(req, res) {
     Feed
-    .where('parent').equals(req.params.ref)
-    .limit(req.params.numPosts)
-    .exec(function(err, results) {
+    .find({})
+    .limit(req.params.num)
+    .exec(function(err, data) {
       if (err) return res.status(500).send('there was an error');
-      if (!results) return res.status(200).send('no data');
-      if (results) res.json(results);
+      res.json(data);
     });
   });
 };

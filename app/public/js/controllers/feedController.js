@@ -5,15 +5,18 @@ module.exports = function(app) {
     $scope.displayAllList = false;
     // $scope.displayFeedInputForm = false;
 
-    $scope.addFeed = function(postId, content) {
+    $scope.addFeed = function(title) {
+      // console.log(title);
       $http({
         method: 'POST',
-        url: 'post/' + postId,
-        data: {title: content}
+        url: 'feed/' + title
+        // data: {title: title}
       }).success(function(data) {
+        console.log(data);
         $scope.addData = data;
         // $scope.displayFeedInputForm = true;
-      }).error(function() {
+      }).error(function(err) {
+        console.log(err);
         return console.log('unable to add new feed');
       });
     };

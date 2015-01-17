@@ -1,92 +1,34 @@
 [
   {
-    parent: 1,
-    title: 'Kevin Garnett ejected after fight with Dwight Howard in Nets-Rockets',
-    comment: [
-      {
-        author:,
-        content:
-                // author: req.body.author,
-        // content: req.body.cnt
-        // "id": 13,
-        // "postId": 1,
-        // "userId": 3,
-        // "date": "",
-        // "content": "Would you happen to know were Capone is? Since you are a secret agent and all"
-      }
+    "title": "Kevin Garnett ejected after fight with Dwight Howard in Nets-Rockets",
+    "comment": []
   },
   {
-    parent: 2,
-    title: 'Breaking!!! LeBron Leaving Cleveland AGAIN!',
-    content: '',
-    comment: [
-      {
-        author:,
-        content:
-                // author: req.body.author,
-        // content: req.body.cnt
-        // "id": 13,
-        // "postId": 1,
-        // "userId": 3,
-        // "date": "",
-        // "content": "Would you happen to know were Capone is? Since you are a secret agent and all"
-      }
+    "title": "Breaking!!! LeBron Leaving Cleveland AGAIN!",
+    "comment": []
   },
   {
-    parent: 3,
-    title: 'Stephen Curry shoots 4 for 38 in blowout loss',
-    content: '',
-    comment: [
-      {
-        "id": 13,
-        "postId": 1,
-        "userId": 3,
-        "date": "",
-        "content": "Would you happen to know were Capone is? Since you are a secret agent and all"
-      }
+    "title": "Stephen Curry shoots 4 for 38 in blowout loss",
+    "comment": []
   },
   {
-    parent: 4,
-    title: 'GSW title hopes gone with Bogut sidelined?',
-    content: '',
-    comment: [
-      {
-        "id": 13,
-        "postId": 1,
-        "userId": 3,
-        "date": "",
-        "content": "Would you happen to know were Capone is? Since you are a secret agent and all"
-      }
+    "title": "GSW title hopes gone with Bogut sidelined?",
+    "comment": []
   },
   {
-    parent: 5,
-    title: 'Melo having knee surgery, game over Knicks',
-    content: '',
-    comment: ''
+    "title": "Melo having knee surgery, game over Knicks",
+    "comment": []
   },
   {
-    parent: 6,
-    title: 'Warriors 14 game win streak!!!!',
-    content: '',
-    comment: [
-      {
-        "id": 13,
-        "postId": 1,
-        "userId": 3,
-        "date": "",
-        "content": "Would you happen to know were Capone is? Since you are a secret agent and all"
-      }
+    "title": "Warriors 14 game win streak!!!!",
+    "comment": []
   },
   {
-    parent: 7,
-    title: 'Why did the Blazers bench Lillard?',
-    content: '',
-    comment: ''
+    "title": "Why did the Blazers bench Lillard?",
+    "comment": []
   },
   {
-    parent: 8,
-    title: 'Westbrook and Love heading towards Lakers 2016?',
-    content: '',
-    comment: ''
+    "title": "Westbrook and Love heading towards Lakers 2016?",
+    "comment": []
   }
 ]

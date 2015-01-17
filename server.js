@@ -12,7 +12,7 @@ var mongooseUri = uriUtil.formatMongoose(mongodbUri);
 mongoose.connect(process.env.MONGO_URL || mongooseUri || 'mongodb://localhost/cm_development');
 app.use(bodyParser.json());
 
-app.use(express.static(__dirname + '/app/'));
+app.use(express.static(__dirname + '/build/'));
 
 require('./app/server/routes/FeedRoutes.js')(app);
 

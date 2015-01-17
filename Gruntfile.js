@@ -14,7 +14,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-jscs');
-  // grunt.loadNpmTasks('grunt-mongoimport');
+  grunt.loadNpmTasks('grunt-mongoimport');
   grunt.loadNpmTasks('grunt-simple-mocha');
 
   grunt.initConfig({
@@ -43,7 +43,7 @@ module.exports = function(grunt) {
     copy: {
       app: {
         cwd: 'app/',
-        src: ['*.html'],
+        src: ['*.html', '*.css'],
         expand: true,
         dest: 'build/'
       }
@@ -95,38 +95,30 @@ module.exports = function(grunt) {
         config: '.jscsrc'
       }
     },
-    // mongoimport: {
-    //   options: {
-    //     db: 'ontraportApp',
-    //     host: 'localhost',
-    //     port: '27017',
-    //     stopOnError: true,
-    //     collections: [
-    //       {
-    //         name: 'users',
-    //         type: 'json',
-    //         file: './codetest/data/users.json',
-    //         jsonArray: true,
-    //         upsert: true,
-    //         drop: true
-    //       },
-    //       {
-    //         name: 'posts',
-    //         type:'json',
-    //         file: './codetest/data/posts.json',
-    //         jsonArray: true,
-    //         upsert: true,
-    //         drop: true
-    //       }
-    //     ]
-    //   }
-    // },
+    mongoimport: {
+      options: {
+        db: 'cm_development',
+        host: 'localhost',
+        port: '27017',
+        stopOnError: true,
+        collections: [
+          {
+            name: 'feeds',
+            type: 'json',
+            file: './app/server/lib/feeds.json',
+            jsonArray: true,
+            upsert: true,
+            drop: true
+          }
+        ]
+      }
+    },
     simplemocha: {
       src: ['app/tests/feedTest.js']
     }
   });
 
-  grunt.registerTask('build:dev', ['clean:dev', 'copy:app', 'browserify:dev']);
+  grunt.registerTask('build:dev', ['clean:dev', 'copy:app', 'browserify:dev', 'mongoimport']);
   grunt.registerTask('build', ['build:dev']);
   grunt.registerTask('test', ['build:test', 'jshint', 'jscs', 'simplemocha']);
   grunt.registerTask('default', ['test']);
