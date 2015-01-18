@@ -35,7 +35,7 @@ describe('Feed Backend Tests', function() {
 
   it('get all feed', function(done) {
     chai.request(server)
-      .get('/feed/10')
+      .get('/feed/50')
       .end(function(err, res) {
         // console.log(res.body);
         expect(err).to.eql(null);

@@ -4,10 +4,12 @@ var Feed = require('../models/FeedModel.js');
 
 module.exports = function(app) {
   //create a new post and saves to the database
+  var time = Date.now();
   app.post('/feed/:title', function(req, res) {
     console.log(req.params.title);
     var feed = new Feed({
-      title: req.params.title
+      title: req.params.title,
+      time: time
     });
     feed.save(function(err, data) {
       if (err) {
@@ -34,9 +36,10 @@ module.exports = function(app) {
   });
 
   //gets all feeds
-  app.get('/feed/:num', function(req, res) {
+  app.get('/feed/:num/:time', function(req, res) {
     Feed
     .find({})
+    .where('time').gt(req.params.time)
     .limit(req.params.num)
     .exec(function(err, data) {
       if (err) return res.status(500).send('there was an error');

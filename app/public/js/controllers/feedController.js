@@ -10,7 +10,6 @@ module.exports = function(app) {
       $http({
         method: 'POST',
         url: 'feed/' + title
-        // data: {title: title}
       }).success(function(data) {
         console.log(data);
         $scope.addData = data;
@@ -19,6 +18,7 @@ module.exports = function(app) {
         console.log(err);
         return console.log('unable to add new feed');
       });
+      $scope.displayAllFeeds();
     };
 
     $scope.addComment = function(postId, comment) {
@@ -34,14 +34,16 @@ module.exports = function(app) {
     };
 
     $scope.displayAllFeeds = function() {
+      var pastTime = Date.now() - (10 * 60 * 1000);
       $http({
         method: 'GET',
-        url: 'feed/10/10'
-      }).success(function(data) {
-        $scope.data = data;
+        url: 'feed/50/' + pastTime
+      }).success(function(allFeeds) {
+        console.log($scope.allFeeds);
+        $scope.allFeeds = allFeeds;
         $scope.displayAllList = true;
-      }).error(function() {
-        return console.log('unable to find info');
+      }).error(function(err) {
+        return console.log(err);
       });
     };
   }]);
