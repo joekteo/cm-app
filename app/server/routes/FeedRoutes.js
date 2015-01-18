@@ -3,7 +3,7 @@
 var Feed = require('../models/FeedModel.js');
 
 module.exports = function(app) {
-  //create a new post and saves to the database
+  //create a new feed and saves to the database
   var time = Date.now();
   app.post('/feed/:title', function(req, res) {
     console.log(req.params.title);
@@ -19,7 +19,7 @@ module.exports = function(app) {
     });
   });
 
-  //adds a comment to the exact post
+  //adds a comment to the exact feed
   app.post('/comments/:titleID/', function(req, res) {
     Feed
     .findOne({id: req.params._id})

@@ -28,8 +28,8 @@ module.exports = function(grunt) {
         }
       },
       test: {
-        src: ['./app/tests/client/**/*.js'],
-        dest:'test/test_bundle.js',
+        src: ['tests/client/**/*.js'],
+        dest:'tests/test_bundle.js',
         options:{
           transform: ['debowerify']
         }
@@ -131,6 +131,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build:dev', ['clean:dev', 'copy:app', 'browserify:dev', 'mongoimport']);
   grunt.registerTask('build', ['build:dev']);
-  grunt.registerTask('test', ['build:test', 'jshint', 'jscs', 'karma:unit', 'simplemocha']);
+  grunt.registerTask('test', ['build:test', 'jshint', 'jscs', 'simplemocha']);
+  grunt.registerTask('test:client', ['browserify:test', 'karma:unit']);
   grunt.registerTask('default', ['test']);
 };

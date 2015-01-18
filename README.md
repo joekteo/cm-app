@@ -1,4 +1,3 @@
 cm-app
 ======
-
-character maker app
+simple MEAN stack app

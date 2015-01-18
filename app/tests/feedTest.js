@@ -35,9 +35,16 @@ describe('Feed Backend Tests', function() {
 
   it('get all feed', function(done) {
     chai.request(server)
-      .get('/feed/50')
+      .post('/feed/KG_RETIRES')
+      // .send({title: 'Kevin Garnett is retiring!!!', time: Date.now()})
+      .end(function(data) {
+        console.log(data.body);
+      });
+    var pastTime = Date.now() - (10 * 60 * 1000);
+    chai.request(server)
+      .get('/feed/50/' + pastTime)
       .end(function(err, res) {
-        // console.log(res.body);
+        console.log(res.body);
         expect(err).to.eql(null);
         expect(res.body).to.be.a('Array');
         done();
