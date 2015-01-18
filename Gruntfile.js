@@ -14,6 +14,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-jscs');
+  grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-mongoimport');
   grunt.loadNpmTasks('grunt-simple-mocha');
 
@@ -25,14 +26,14 @@ module.exports = function(grunt) {
         options: {
           transform: ['debowerify']
         }
+      },
+      test: {
+        src: ['./app/tests/client/**/*.js'],
+        dest:'test/test_bundle.js',
+        options:{
+          transform: ['debowerify']
+        }
       }
-      // test: {
-      //   src: ['test/client/**/*test.js'],
-      //   dest:'test/test_bundle.js',
-      //   options:{
-      //     transform: ['debowerify']
-      //   }
-      // }
     },
     jshint: {
       all: srcFiles,
@@ -95,6 +96,16 @@ module.exports = function(grunt) {
         config: '.jscsrc'
       }
     },
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js'
+      },
+      continuous: {
+        configFile: 'karma.conf.js',
+        singleRun: true,
+        browsers: ['PhantomJS']
+      }
+    },
     mongoimport: {
       options: {
         db: 'cm_development',
@@ -120,6 +131,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build:dev', ['clean:dev', 'copy:app', 'browserify:dev', 'mongoimport']);
   grunt.registerTask('build', ['build:dev']);
-  grunt.registerTask('test', ['build:test', 'jshint', 'jscs', 'simplemocha']);
+  grunt.registerTask('test', ['build:test', 'jshint', 'jscs', 'karma:unit', 'simplemocha']);
   grunt.registerTask('default', ['test']);
 };
