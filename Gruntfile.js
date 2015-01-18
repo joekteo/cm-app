@@ -133,5 +133,5 @@ module.exports = function(grunt) {
   grunt.registerTask('build', ['build:dev']);
   grunt.registerTask('test', ['build:test', 'jshint', 'jscs', 'simplemocha']);
   grunt.registerTask('test:client', ['test', 'browserify:test', 'karma:unit']);
-  grunt.registerTask('default', ['test']);
+  grunt.registerTask('default', ['test:client']);
 };
