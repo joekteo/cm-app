@@ -28,8 +28,8 @@ module.exports = function(grunt) {
         }
       },
       test: {
-        src: ['tests/client/**/*.js'],
-        dest:'tests/test_bundle.js',
+        src: ['app/tests/client/*.js'],
+        dest:'build/tests/test_bundle.js',
         options:{
           transform: ['debowerify']
         }

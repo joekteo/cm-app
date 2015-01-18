@@ -8,7 +8,7 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
 
     files: [
-      'test/test_bundle.js'
+      './build/tests/test_bundle.js'
     ],
 
     exclude: [

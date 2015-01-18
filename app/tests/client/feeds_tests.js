@@ -1,31 +1,33 @@
 'use strict';
 
-require('../../../app/public/app.js');
+require('../../public/app');
 require('angular-mocks');
 
 describe('feedController', function() {
   var $controllerConstructor;
   var $httpBackend;
   var $scope;
-  var expect;
+
+  beforeEach(angular.mock.module('cmApp'));
+
+  beforeEach(angular.mock.inject(function($rootScope, $controller) {
+    $scope = $rootScope.$new();
+    $controllerConstructor = $controller;
+  }));
 
   it('should be able to create a controller', function() {
     var feedController = $controllerConstructor('feedController', {$scope: $scope});
     expect(typeof feedController).toBe('object');
   });
 
-  it('should save a new feed', function() {
-    var time = Date.now();
-    $httpBackend.expectPOST('/feed/:title').respond(200, {title: 'test title', time: time});
-    $controllerConstructor('feedController', {$scope: $scope});
-    $scope.notes = [];
-    $scope.newFeed = {feedBody: 'test title'};
-    $scope.saveNewFeed();
+  describe('rest request', function() {
+    beforeEach(angular.mock.inject(function(_$httpBackend_) {
+      $httpBackend = _$httpBackend_;
+    }));
 
-    $httpBackend.flush();
-
-    expect($scope.feed.length).toBe(1);
-    expect($scope.feed[0]).toBe('test title');
-    expect($scope.newNote).toBe(null);
+    afterEach(function() {
+      $httpBackend.verifyNoOutstandingExpectation();
+      $httpBackend.verifyNoOutstandingRequest();
+    });
   });
 });
