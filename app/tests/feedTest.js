@@ -28,7 +28,7 @@ describe('Feed Backend Tests', function() {
       .end(function(err, res) {
         // console.log(res.body);
         expect(err).to.eql(null);
-        expect(res.body.comment[1]).to.be.a('object');
+        expect(res.body.comment[0]).to.be.a('object');
         done();
       });
   });
