@@ -15,6 +15,10 @@ describe('feedController', function() {
     $controllerConstructor = $controller;
   }));
 
+  it('test should work', function() {
+    expect(true).toBe(true);
+  });
+
   it('should be able to create a controller', function() {
     var feedController = $controllerConstructor('feedController', {$scope: $scope});
     expect(typeof feedController).toBe('object');
