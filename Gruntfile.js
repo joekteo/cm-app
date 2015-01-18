@@ -132,6 +132,6 @@ module.exports = function(grunt) {
   grunt.registerTask('build:dev', ['clean:dev', 'copy:app', 'browserify:dev', 'mongoimport']);
   grunt.registerTask('build', ['build:dev']);
   grunt.registerTask('test', ['build:test', 'jshint', 'jscs', 'simplemocha']);
-  grunt.registerTask('test:client', ['browserify:test', 'karma:unit']);
+  grunt.registerTask('test:client', ['test', 'browserify:test', 'karma:unit']);
   grunt.registerTask('default', ['test']);
 };
