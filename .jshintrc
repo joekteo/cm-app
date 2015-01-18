@@ -11,7 +11,7 @@
     "after"      : false,
     "afterEach"  : false,
     "equal"      : false,
-    "expect"     : false
+    "expect"     : true
   },
   "globalstrict": true,
   "quotmark": false,
